@@ -9,12 +9,12 @@ class Song {
 	friend std::ostream &operator<<(std::ostream &os, const Song &obj);
 	private:
 		std::string name_ {};
-		std::string title_ {};
+		std::string artist_ {};
 		int rating_ {};
 	public:
-		std::string GetName() {return name_;}
-		std::string GetTitle() {return title_;}
-		int GetRating() {return rating_;}
+		std::string GetName() const {return name_;}
+		std::string GetArtist() const {return artist_;}
+		int GetRating() const {return rating_;}
 		
 		bool operator<(const Song &rhs);
 		bool operator==(const Song &rhs);		
