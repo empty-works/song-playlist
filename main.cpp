@@ -89,7 +89,9 @@ void ListSongs(const std::list<Song> &song_list) {
 Song PlayNextSong(std::list<Song> &song_list, const Song &current_song) {	
 	std::cout << "Playing next song" << std::endl;	
 	auto it = std::find(song_list.begin(), song_list.end(), Song{current_song.GetName(), current_song.GetArtist(), current_song.GetRating()});
-	++it;
+	if(++it == song_list.end())
+		it = song_list.begin();	
 	std::cout << *it << std::endl;
+	std::cout << std::endl;
 	return *it;
 }
