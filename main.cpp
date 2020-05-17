@@ -1,7 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
+#include <iterator>
+#include <list>
 #include "Song.h"
+
+void PlayFirstSong();
+void PlayNextSong();
+void PlayPreviousSong();
+void AddSong();
 
 int main() {
 	
@@ -12,6 +20,9 @@ int main() {
 		Song {"Double Up", "Nipsey Hussle", 5}, 
 		Song {"On Chill", "Wale", 5}
 	};
+
+	std::list<Song> song_list;
+      	std::copy(songs.begin(), songs.end(), std::front_inserter(song_list));	
 	
 	char selection;
 	do {
@@ -24,7 +35,14 @@ int main() {
 		std::cout << "Enter a selection (Q to quit)" << std::endl;	
 
 		std::cin >> selection;
+		std::cin.clear();
+		std::cin.ignore(100, '\n');
+
 	}while(selection != 'q' && selection != 'Q');
 
 	return 0;
+}
+
+void PlayFirstSong() {
+	
 }
