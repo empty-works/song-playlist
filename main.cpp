@@ -22,13 +22,11 @@ int main() {
 		Song {"On Chill", "Wale", 5}
 	};
 
-	Song current_song {};
 	std::list<Song> song_list;
       	std::copy(songs.begin(), songs.end(), std::back_inserter(song_list));	
-	std::list<Song>::iterator it = song_list.begin();
 	char selection;
 
-	PlayFirstSong(song_list);
+	Song current_song {PlayFirstSong(song_list)};
 	do {
 		std::cout << std::setw(3) << std::left << "F" << std::setw(3) << std::left << "-" << "Play First Song" << std::endl;
 		std::cout << std::setw(3) << std::left << "N" << std::setw(3) << std::left << "-" << "Play Next Song" << std:: endl;
@@ -46,7 +44,13 @@ int main() {
 			case 'f':
 			case 'F': 
 				{
-					PlayFirstSong(song_list);
+					current_song = PlayFirstSong(song_list);
+					break;
+				}
+			case 'n':
+			case 'N':
+				{
+					current_song = PlayNextSong(song_list, current_song);
 					break;
 				}
 			case 'l':
@@ -82,7 +86,10 @@ void ListSongs(const std::list<Song> &song_list) {
 	std::cout << std::endl;
 }
 
-Song PlayNextSong(std::list<Song> &song_list, const Song &current_song) {
-	
+Song PlayNextSong(std::list<Song> &song_list, const Song &current_song) {	
 	std::cout << "Playing next song" << std::endl;	
+	auto it = std::find(song_list.begin(), song_list.end(), Song{current_song.GetName(), current_song.GetArtist(), current_song.GetRating()});
+	++it;
+	std::cout << *it << std::endl;
+	return *it;
 }
