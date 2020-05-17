@@ -8,7 +8,7 @@
 
 Song PlayFirstSong(std::list<Song> &song_list);
 Song PlayNextSong(std::list<Song> &song_list, const Song &current_song);
-void PlayPreviousSong();
+Song PlayPreviousSong(std::list<Song> &song_list, const Song &current_song);
 void AddSong();
 void ListSongs(const std::list<Song> &song_list);
 
@@ -53,6 +53,12 @@ int main() {
 					current_song = PlayNextSong(song_list, current_song);
 					break;
 				}
+			case 'p':
+			case 'P':
+				{
+					current_song = PlayPreviousSong(song_list, current_song);
+					break;
+				}
 			case 'l':
 			case 'L':
 				{
@@ -87,10 +93,24 @@ void ListSongs(const std::list<Song> &song_list) {
 }
 
 Song PlayNextSong(std::list<Song> &song_list, const Song &current_song) {	
-	std::cout << "Playing next song" << std::endl;	
+	std::cout << "Playing next song" << std::endl;
+	std::cout << "Playing:" << std::endl;	
 	auto it = std::find(song_list.begin(), song_list.end(), Song{current_song.GetName(), current_song.GetArtist(), current_song.GetRating()});
 	if(++it == song_list.end())
 		it = song_list.begin();	
+	std::cout << *it << std::endl;
+	std::cout << std::endl;
+	return *it;
+}
+
+Song PlayPreviousSong(std::list<Song> &song_list, const Song &current_song) {
+	std::cout << "Playing previous song" << std::endl;
+	std::cout << "Playing:" << std::endl;
+	auto it = std::find(song_list.begin(), song_list.end(), Song{current_song.GetName(), current_song.GetArtist(), current_song.GetRating()});
+	if(it == song_list.begin()) {
+		it = song_list.end();
+	}
+	--it;
 	std::cout << *it << std::endl;
 	std::cout << std::endl;
 	return *it;
