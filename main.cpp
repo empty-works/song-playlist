@@ -6,8 +6,8 @@
 #include <list>
 #include "Song.h"
 
-void PlayFirstSong(std::list<Song> &song_list);
-void PlayNextSong();
+Song PlayFirstSong(std::list<Song> &song_list);
+Song PlayNextSong(std::list<Song> &song_list, const Song &current_song);
 void PlayPreviousSong();
 void AddSong();
 void ListSongs(const std::list<Song> &song_list);
@@ -22,11 +22,13 @@ int main() {
 		Song {"On Chill", "Wale", 5}
 	};
 
+	Song current_song {};
 	std::list<Song> song_list;
       	std::copy(songs.begin(), songs.end(), std::back_inserter(song_list));	
 	std::list<Song>::iterator it = song_list.begin();
-
 	char selection;
+
+	PlayFirstSong(song_list);
 	do {
 		std::cout << std::setw(3) << std::left << "F" << std::setw(3) << std::left << "-" << "Play First Song" << std::endl;
 		std::cout << std::setw(3) << std::left << "N" << std::setw(3) << std::left << "-" << "Play Next Song" << std:: endl;
@@ -60,12 +62,13 @@ int main() {
 	return 0;
 }
 
-void PlayFirstSong(std::list<Song> &song_list) {
+Song PlayFirstSong(std::list<Song> &song_list) {
 	std::cout << std::endl;
 	std::cout << "Playing first song" << std::endl;
 	std::cout << "Playing:" << std::endl;
 	auto it = song_list.begin();
 	std::cout << *it << std::endl << std::endl;
+	return *it;
 }
 
 void ListSongs(const std::list<Song> &song_list) {
@@ -77,4 +80,9 @@ void ListSongs(const std::list<Song> &song_list) {
 		it++;
 	}	
 	std::cout << std::endl;
+}
+
+Song PlayNextSong(std::list<Song> &song_list, const Song &current_song) {
+	
+	std::cout << "Playing next song" << std::endl;	
 }
