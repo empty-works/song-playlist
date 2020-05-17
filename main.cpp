@@ -6,10 +6,11 @@
 #include <list>
 #include "Song.h"
 
-void PlayFirstSong();
+void PlayFirstSong(std::list<Song> &song_list);
 void PlayNextSong();
 void PlayPreviousSong();
 void AddSong();
+void ListSongs(const std::list<Song> &song_list);
 
 int main() {
 	
@@ -22,7 +23,7 @@ int main() {
 	};
 
 	std::list<Song> song_list;
-      	std::copy(songs.begin(), songs.end(), std::front_inserter(song_list));	
+      	std::copy(songs.begin(), songs.end(), std::back_inserter(song_list));	
 	std::list<Song>::iterator it = song_list.begin();
 
 	char selection;
@@ -39,6 +40,20 @@ int main() {
 		std::cin.clear();
 		std::cin.ignore(100, '\n');
 
+		switch(selection) {
+			case 'f':
+			case 'F': 
+				{
+					PlayFirstSong(song_list);
+					break;
+				}
+			case 'l':
+			case 'L':
+				{
+					ListSongs(song_list);
+					break;
+				}	
+		}
 
 	}while(selection != 'q' && selection != 'Q');
 
@@ -50,5 +65,16 @@ void PlayFirstSong(std::list<Song> &song_list) {
 	std::cout << "Playing first song" << std::endl;
 	std::cout << "Playing:" << std::endl;
 	auto it = song_list.begin();
-	std::cout << *it << std::endl;
+	std::cout << *it << std::endl << std::endl;
+}
+
+void ListSongs(const std::list<Song> &song_list) {
+	std::cout << std::endl;
+	std::cout << "Listing all songs" << std::endl;
+	auto it = song_list.begin();
+	while(it != song_list.end()) {
+		std::cout << *it << std::endl;
+		it++;
+	}	
+	std::cout << std::endl;
 }
