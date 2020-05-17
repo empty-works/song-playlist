@@ -23,7 +23,8 @@ int main() {
 
 	std::list<Song> song_list;
       	std::copy(songs.begin(), songs.end(), std::front_inserter(song_list));	
-	
+	std::list<Song>::iterator it = song_list.begin();
+
 	char selection;
 	do {
 		std::cout << std::setw(3) << std::left << "F" << std::setw(3) << std::left << "-" << "Play First Song" << std::endl;
@@ -38,11 +39,16 @@ int main() {
 		std::cin.clear();
 		std::cin.ignore(100, '\n');
 
+
 	}while(selection != 'q' && selection != 'Q');
 
 	return 0;
 }
 
-void PlayFirstSong() {
-	
+void PlayFirstSong(std::list<Song> &song_list) {
+	std::cout << std::endl;
+	std::cout << "Playing first song" << std::endl;
+	std::cout << "Playing:" << std::endl;
+	auto it = song_list.begin();
+	std::cout << *it << std::endl;
 }
