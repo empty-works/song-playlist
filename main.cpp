@@ -119,5 +119,9 @@ Song PlayPreviousSong(std::list<Song> &song_list, const Song &current_song) {
 Song AddSong(std::list<Song> &song_list, const Song &current_song) {
 	std::string song_title {};
 	std::cout << "Song title: ";
-	std::getline(std::cin, song_title);	
+	std::getline(std::cin, song_title);
+	std::string song_artist {};
+	std::cout << "Song artist: ";
+	std::getline(std::cin, song_artist);
+		
 }
