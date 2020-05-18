@@ -123,5 +123,7 @@ Song AddSong(std::list<Song> &song_list, const Song &current_song) {
 	std::string song_artist {};
 	std::cout << "Song artist: ";
 	std::getline(std::cin, song_artist);
-		
+	int rating {};
+	std::cout << "Song rating: ";
+	std::cin >> rating;	
 }
