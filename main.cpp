@@ -125,5 +125,8 @@ Song AddSong(std::list<Song> &song_list, const Song &current_song) {
 	std::getline(std::cin, song_artist);
 	int rating {};
 	std::cout << "Song rating: ";
-	std::cin >> rating;	
+	std::cin >> rating;
+	Song new_song {song_title, song_artist, rating};
+	song_list.push_front(new_song);
+	return new_song;		
 }
