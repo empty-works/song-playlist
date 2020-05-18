@@ -59,6 +59,12 @@ int main() {
 					current_song = PlayPreviousSong(song_list, current_song);
 					break;
 				}
+			case 'a':
+			case 'A':
+				{
+					current_song = AddSong(song_list, current_song);
+					break;
+				}
 			case 'l':
 			case 'L':
 				{
