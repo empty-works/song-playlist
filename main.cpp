@@ -9,7 +9,7 @@
 Song PlayFirstSong(std::list<Song> &song_list);
 Song PlayNextSong(std::list<Song> &song_list, const Song &current_song);
 Song PlayPreviousSong(std::list<Song> &song_list, const Song &current_song);
-void AddSong();
+Song AddSong(std::list<Song> &song_list, const Song &current_song);
 void ListSongs(const std::list<Song> &song_list);
 
 int main() {
@@ -114,4 +114,10 @@ Song PlayPreviousSong(std::list<Song> &song_list, const Song &current_song) {
 	std::cout << *it << std::endl;
 	std::cout << std::endl;
 	return *it;
+}
+
+Song AddSong(std::list<Song> &song_list, const Song &current_song) {
+	std::string song_title {};
+	std::cout << "Song title: ";
+	std::getline(std::cin, song_title);	
 }
