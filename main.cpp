@@ -134,5 +134,8 @@ Song AddSong(std::list<Song> &song_list, const Song &current_song) {
 	std::cin >> rating;
 	Song new_song {song_title, song_artist, rating};
 	song_list.push_front(new_song);
+	std::cout << "Playing: " << std::endl;
+	std::cout << new_song << std::endl;
+	std::cout << std::endl;
 	return new_song;		
 }
