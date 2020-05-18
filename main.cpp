@@ -37,40 +37,37 @@ int main() {
 		std::cout << "Enter a selection (Q to quit)" << std::endl;	
 
 		std::cin >> selection;
+		selection = std::toupper(selection);
 		std::cin.clear();
 		std::cin.ignore(100, '\n');
 
 		switch(selection) {
-			case 'f':
 			case 'F': 
 				{
 					current_song = PlayFirstSong(song_list);
 					break;
 				}
-			case 'n':
 			case 'N':
 				{
 					current_song = PlayNextSong(song_list, current_song);
 					break;
 				}
-			case 'p':
 			case 'P':
 				{
 					current_song = PlayPreviousSong(song_list, current_song);
 					break;
 				}
-			case 'a':
 			case 'A':
 				{
 					current_song = AddSong(song_list, current_song);
 					break;
 				}
-			case 'l':
 			case 'L':
 				{
 					ListSongs(song_list);
 					break;
-				}	
+				}
+			default: std::cout << "Error: illegal selection." << std::endl << std::endl;	
 		}
 
 	}while(selection != 'q' && selection != 'Q');
